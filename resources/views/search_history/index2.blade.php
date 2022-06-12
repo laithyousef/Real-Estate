@@ -92,19 +92,13 @@
                                             </td>
 
                                             <td class="td-actions text-right">
-
-
-
-
-                                                        <a
-                                                                rel="tooltip"  data-placement="top" title="حذف"
-                                                                class="btn btn-danger btn-link" data-original-title="" title=""
-                                                                data-toggle="modal"  onclick="deleteData({{ $search->id }})" data-target="#exampleModal"
-
-                                                        >
-                                                            <i class="material-icons">delete</i>
-                                                            <div class="ripple-container"></div>
-                                                        </a>
+                                                        
+                                                <a rel="tooltip"  data-placement="top" title="حذف"
+                                                    class="btn btn-danger btn-link" data-original-title="" title=""
+                                                    data-toggle="modal"  onclick="deleteData({{ $search->id }})" data-target="#exampleModal">
+                                                    <i class="material-icons">delete</i>
+                                                    <div class="ripple-container"></div>
+                                                </a>
 
 
                                                 <a rel="tooltip" data-toggle="tooltip" data-placement="top" title="المزيد من التفاصيل"

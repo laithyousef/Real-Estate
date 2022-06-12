@@ -36,9 +36,8 @@ class AppointmentController extends Controller
         $user->old_appointments_number =  $user->new_appointments_number;
         $user->save();
 
-        return    view('appointments.index',[
-        'appointments'=>$appointements->
-        where('user_id',Auth::user()->id)->paginate(4),
+        return    view('appointments.index',['appointments'=>$appointements
+        ->where('user_id',Auth::user()->id)->paginate(4),
             'appointments_requests'=>[]
     ]);
     }
@@ -117,8 +116,8 @@ class AppointmentController extends Controller
         $appointment->update($request->all());
 
         $user_id = $appointment->user_id;
-        $user = User::find($user_id,'تم تغيير موعد لك مع أحد أصحاب المنازل راجع حسابك');
-        $this->sendEmails($user );
+        $user = User::find($user_id);
+        $this->sendEmail($user, 'تم تغيير موعد لك مع أحد أصحاب المنازل راجع حسابك' );
 
         return redirect()->route('appointment.index')->withStatus('تم تعديل الموعد بنجاح');
     }

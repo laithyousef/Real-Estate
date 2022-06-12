@@ -26,7 +26,7 @@ class PlaceController extends Controller
     public function create()
     {
         $states=State::all();
-        return view('places.create',['states'=>$states]);
+        return view('places.create',compact('states'));
     }
 
     /**
@@ -63,13 +63,11 @@ class PlaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Place $place)
+    public function edit($id)
     {
-
-        $state=State::find($place->state_id);
-        return view('places.edit',
-            ['place'=>$place,'states'=>State::all(),'state_name'=>$state->name
-            ]);
+        $place = Place::find($id);
+        $states =State::all();
+        return view('places.edit',compact('states', 'place'));
     }
 
     /**
@@ -79,9 +77,16 @@ class PlaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Place $place)
     {
-        //
+        $this->validate($request,[
+            'name'=>'required',
+            'state_id'=>'required'
+        ]);
+
+        $place->update($request->all());
+        return redirect()->route('place.index')->withStatus('تم تعديل المنطقة بنجاح');
+
     }
 
     /**

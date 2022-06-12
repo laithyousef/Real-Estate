@@ -18,10 +18,7 @@ class HouseSearchWithColleaguesController extends Controller
     public function index( )
     {
         $search_history = HouseSearchesWithColleague::get()->unique('user_id');
-      return view('search_history.index',[
-          'search_history'=>
-              $search_history
-      ]);
+      return view('search_history.index',[ 'search_history'=> $search_history ]);
     }
 
     public function index2( )
@@ -70,7 +67,7 @@ class HouseSearchWithColleaguesController extends Controller
     {
 
 
-        $myRequest = new \Illuminate\Http\Request();
+        $myRequest = new Request();
         $myRequest->setMethod('POST');
         $myRequest->request->add(
             [

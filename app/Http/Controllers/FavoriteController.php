@@ -15,7 +15,7 @@ class FavoriteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( )
+    public function index()
     {
         $favorites=Favorite::all()->where('user_id',Auth::user()->id);
         return view('favorites.index',['favorites'=>$favorites]);

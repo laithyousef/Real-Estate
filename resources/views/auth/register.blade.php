@@ -205,9 +205,11 @@
                         <div class="col-sm-7">
                           <select class="selectpicker" data-style="btn btn-info btn-success" name="college_speciality_id" id="college_specialities" title="Single Select" >
                             <option disabled selected> اختر الاختصاص</option>
-                            @foreach($college_specialities as $college_speciality)
+
+                            {{-- @foreach($collegeSpecialities as $college_speciality)
                               <option value="{{$college_speciality->id}}" >{{$college_speciality->name}}</option>
-                            @endforeach
+                            @endforeach --}}
+
                           </select>
                           @if ($errors->has('college_speciality_id'))
                             <span id="college_speciality_id-error" class="error text-danger" for="college_speciality_id">يجب أن تختار الاختصاص</span>

@@ -30,13 +30,12 @@ class HouseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(House $houses,Place $places,CollegeSpeciality $collegeSpecialities)
+    public function index()
     {
-        return view('houses.index',
-            ['houses'=>$houses::orderBy('created_at','desc')->paginate(4),
-             'places'=>$places->all(),
-             'collegeSpecialities'=>$collegeSpecialities->all(),
-            ]);
+        $houses = House::orderBy('created_at','desc')->paginate(4);
+        $places = Place::all();
+        $collegeSpecialities = CollegeSpeciality::all();
+        return view('houses.index',compact('houses', 'places', 'collegeSpecialities'));
     }
 
     /**
@@ -125,21 +124,15 @@ class HouseController extends Controller
         return view('houses.show',['house'=>$house]);
     }
 
-    public function search(Request $request,Place $places,CollegeSpeciality $collegeSpecialities)
+    public function search(Request $request)
     {
         $founded_houses = HouseSearch::apply($request);
 
-        return view('houses.index',
-            ['houses'=>$founded_houses->paginate($founded_houses->count()) ,
-                'places'=>$places->all(),
-                'collegeSpecialities'=>$collegeSpecialities->all(),
-            ]);
-//        return view('houses.index',[
-//            'houses'=>$founded_houses->paginate(4),
-//            'places'=>$places->all(),
-//            'collegeSpecialities'=>$collegeSpecialities->all(),
-//            ]);
-//        return HouseSearch::apply($request);
+            $houses = $founded_houses->paginate($founded_houses->count()) ;
+            $places = Place::all();
+            $collegeSpecialities = CollegeSpeciality::all();
+            return view('houses.index',compact('houses', 'places', 'collegeSpecialities'));
+
     }
 
     public function search2(Request $request,HouseSearchesWithColleague $houseSearchesWithColleague)

@@ -40,9 +40,8 @@
                                     <label class="col-sm-2 col-form-label">{{ __('الاسم ') }}</label>
                                     <div class="col-sm-7">
                                     <select class="selectpicker" data-style="btn btn-info btn-success" name="state_id" id="states" title="Single Select" >
-                                        <option disabled selected> {{ $state_name ?? '' }}</option>
                                         @foreach($states as $state)
-                                            <option value="{{$state->id}}" >{{$state->name}}</option>
+                                            <option value="{{ $state->id }}"  {{$state->id == $place->state->id ? 'selected' : ""}} > {{ $state->name }} </option>
                                         @endforeach
                                     </select>
                                         @if ($errors->has('state_id'))

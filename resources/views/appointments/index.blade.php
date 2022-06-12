@@ -85,18 +85,11 @@
                                                     </td>
                                                     <td class="td-actions text-right">
 
-
-
-
-
                                                         <a rel="tooltip" data-toggle="tooltip" data-placement="top" title="إعطاء موعد"
                                                         class="btn btn-success btn-link" href="{{ route('appointment.createAppointment', $appointments_request) }}" data-original-title="" title="">
                                                         <i class="material-icons">add</i>
                                                         <div class="ripple-container"></div>
                                                         </a>
-
-
-
 
                                                     </td>
 

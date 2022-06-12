@@ -51,4 +51,6 @@ class User extends Authenticatable
     public function searches_with_colleagues(){
         return $this->hasMany(HouseSearchHistoryFilter::class);
     }
+
+
 }
